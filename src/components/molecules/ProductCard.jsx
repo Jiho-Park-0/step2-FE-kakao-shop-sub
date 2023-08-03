@@ -14,8 +14,9 @@ import Photo from '../atoms/Photo';
  */
 
 const ProductCard = ({ product }) => {
+  const staticServerUri = process.env.REACT_APP_PATH || "";
   return (
-    <Card to={`/products/${product.id}`}>
+    <Card to={staticServerUri + `/products/${product.id}`}>
       <Photo src={product.image} alt={product.productName} className="h-40 w-60 rounded-md" />
       <h3 className="product-name block w-60 p-0 text-sm">{product.productName}</h3>
       <span className="block overflow-hidden font-bold">

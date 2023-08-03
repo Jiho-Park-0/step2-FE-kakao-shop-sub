@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 const OrderList = ({ data }) => {
   const navigate = useNavigate();
+  const staticServerUri = process.env.REACT_APP_PATH || "";
   // Function to render individual product items
   const renderProduct = (product) => {
     let renderComponent = [];
@@ -67,7 +68,7 @@ const OrderList = ({ data }) => {
         className="w-full rounded bg-kakao_yellow p-4 font-bold text-black"
         children="쇼핑 계속하기"
         onClick={() => {
-          navigate("/");
+          navigate({staticServerUri + "/"});
         }}
       />
     </div>

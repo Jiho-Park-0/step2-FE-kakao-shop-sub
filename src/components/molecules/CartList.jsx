@@ -17,7 +17,7 @@ import { comma } from "../../utils/convert";
 import { useMutation } from "@tanstack/react-query";
 
 const CartList = ({ data }) => {
-  
+  const staticServerUri = process.env.REACT_APP_PATH || "";
   // hook을 제외한 모든 컴포넌트 내에 코드는 재할당, 메모리 선언
   const route = useNavigate();
   const [cartItems, setCartItems] = useState([]);
@@ -180,7 +180,7 @@ const CartList = ({ data }) => {
           mutate(updatePayload, {
             onSuccess: (data) => {
               console.log(data);
-              route("/order");
+              route({staticServerUri + "/order"});
             },
             onError: (error) => {},
           });
