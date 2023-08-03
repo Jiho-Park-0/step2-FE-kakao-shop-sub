@@ -7,11 +7,12 @@
  */
 
 const Photo = ({ src, alt, className }) => {
+  const staticServerUri = process.env.REACT_APP_PATH || "";
   return (
     <picture>
-      <source srcSet={`http://kakao-app-env.eba-kfsgeb74.ap-northeast-2.elasticbeanstalk.com${src}`} />
+      <source srcSet={`staticServerUri${src}`} />
       <img
-        src={`http://kakao-app-env.eba-kfsgeb74.ap-northeast-2.elasticbeanstalk.com${src}`}
+        src={`staticServerUri${src}`}
         alt={alt}
         className={className}
       />
