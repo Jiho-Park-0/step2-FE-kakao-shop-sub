@@ -26,6 +26,8 @@ import { setCookie } from "../../storage/Cookie";
  */
 
 const LoginForm = () => {
+  const staticServerUri = process.env.REACT_APP_PATH || "";
+
   const dispatch = useDispatch();
   const email = useSelector((state) => state.user.email); // user 안에 email에 접근
   const password = useSelector((state) => state.user.password); // user 안에 password에 접근
@@ -134,7 +136,7 @@ const LoginForm = () => {
       >
         로그인
       </Button>
-      <Link to="/signup">Sign up</Link>
+      <Link to={staticServerUri + "/signup"}>Sign up</Link>
     </Container>
   );
 };

@@ -12,6 +12,8 @@ import { removeCookie } from '../../storage/Cookie';
  */
 
 function GNB() {
+  const staticServerUri = process.env.REACT_APP_PATH || "";
+
   const email = useSelector((state) => state.user.email);
   const dispatch = useDispatch();
 
@@ -25,14 +27,14 @@ function GNB() {
   return (
     <header className="header m-0 flex justify-between p-6">
       <div className=" contents ">
-        <Link to="/">
+        <Link to={staticServerUri + "/"}>
           <img src={logoKakao} alt="logoKakao.png" height={20} width={90} />
         </Link>
         <nav>
           <div className="navigation float-right flex items-center">
             <span className="mx-3">
               {/* 장바구니 버튼 */}
-              <Link to="/cart">
+              <Link to={staticServerUri + "/cart"}>
                 <img src={cart} alt="cart.png" height={28} width={28} />
               </Link>
             </span>
@@ -40,11 +42,11 @@ function GNB() {
             <span className="mx-3">
               {/* 로그인 버튼 */}
               {email ? (
-                <Link to="/login" onClick={handleLogout} style={{ textDecoration: 'none', color: 'black' }}>
+                <Link to={staticServerUri + "/login"} onClick={handleLogout} style={{ textDecoration: 'none', color: 'black' }}>
                   {email} 로그아웃{' '}
                 </Link>
               ) : (
-                <Link to="/login" style={{ textDecoration: 'none', color: 'black' }}>
+                <Link to={staticServerUri + "/login"} style={{ textDecoration: 'none', color: 'black' }}>
                   {' '}
                   로그인{' '}
                 </Link>

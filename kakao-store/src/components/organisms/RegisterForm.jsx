@@ -31,6 +31,8 @@ const RegisterForm = () => {
   const [errors, setErrors] = useState([]);
 
   const handleRegister = () => {
+    const staticServerUri = process.env.REACT_APP_PATH || "";
+
     const validationErrors = validateForm(value);
 
     if (!validationErrors) {
@@ -39,7 +41,7 @@ const RegisterForm = () => {
         password: value.password,
         username: value.username,
       });
-      navigate('/');
+      navigate(staticServerUri + "/");
     } else {
       setErrors(validationErrors);
     }

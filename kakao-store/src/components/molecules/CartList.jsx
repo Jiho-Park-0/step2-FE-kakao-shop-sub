@@ -17,6 +17,7 @@ import { comma } from "../../utils/convert";
 import { useMutation } from "@tanstack/react-query";
 
 const CartList = ({ data }) => {
+  
   // hook을 제외한 모든 컴포넌트 내에 코드는 재할당, 메모리 선언
   const route = useNavigate();
   const [cartItems, setCartItems] = useState([]);

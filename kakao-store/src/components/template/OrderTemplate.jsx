@@ -40,6 +40,7 @@ const OrderTemplate = ({ data }) => {
   // 사용자의 장바구니 목록을 조회해서 보여주는 것
   const { products, totalPrice } = data?.data?.response ?? {};
   const navigate = useNavigate();
+  const staticServerUri = process.env.REACT_APP_PATH || "";
 
   const [agreePayment, setAgreePayment] = useState(false);
   const [agreePolicy, setAgreePolicy] = useState(false);
@@ -219,7 +220,7 @@ const OrderTemplate = ({ data }) => {
                   // alert("주문에 실패하였습니다.");
                   if (error.response.status === 404) {
                     // 엉뚱한 product 정보
-                    navigate("/error");
+                    navigate(staticServerUri + "/error");
                   } else {
                     // 서버사이드 에러
                     alert("주문에 실패하였습니다. 다시 시도해주세요.");
@@ -229,7 +230,7 @@ const OrderTemplate = ({ data }) => {
                   console.log(res.data.response.id);
                   const { id } = res.data.response;
                   alert("주문이 완료되었습니다.");
-                  navigate(`/orders/${id}`);
+                  navigate(staticServerUri + `/orders/${id}`);
                 },
               });
             }}

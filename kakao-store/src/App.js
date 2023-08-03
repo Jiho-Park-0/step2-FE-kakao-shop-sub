@@ -17,6 +17,8 @@ import OrderResultPage from './pages/OrderResultPage';
 function App() {
   const dispatch = useDispatch();
 
+  const staticServerUri = process.env.REACT_APP_PATH || "";
+
   useEffect(() => {
     const storedEmail = localStorage.getItem('email');
     const storedPassword = localStorage.getItem('password');
@@ -38,22 +40,22 @@ function App() {
         {/* 단독 레이아웃 */}
 
         <Routes> 
-          <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
-          <Route path="/signup" element={<RegisterPage />} />
+          <Route path={staticServerUri + "/login"} element={<LoginPage onLogin={handleLogin} />} />
+          <Route path={staticServerUri + "/signup"} element={<RegisterPage />} />
         </Routes>
         <Routes>
           <Route element={<MainLayout />}>
-            <Route path="/" element={<HomePage />} />
+            <Route path={staticServerUri + "/"} element={<HomePage />} />
             {/* <Route path="/cart" element={<CartPage />} /> */}
-            <Route path="/products/:id" element={<ProductDetailPage />} />
-            <Route path="/error" element={<ErrorPage />} />
+            <Route path={staticServerUri + "/products/:id"} element={<ProductDetailPage />} />
+            <Route path={staticServerUri + "/error"} element={<ErrorPage />} />
           </Route>
 
           {/* 사용자가 로그인 됐을 때만 접근 가능한 레이아웃*/}
           <Route element={<RequiredAythLayout />}>
-            <Route path="/cart" element={<CartPage />} />
-            <Route path="/order" element={<OrderPage />} />
-            <Route path="/orders/:id" element={<OrderResultPage />} />
+            <Route path={staticServerUri + "/cart"} element={<CartPage />} />
+            <Route path={staticServerUri + "/order"} element={<OrderPage />} />
+            <Route path={staticServerUri + "/orders/:id"} element={<OrderResultPage />} />
           </Route>
         </Routes>
       </BrowserRouter>

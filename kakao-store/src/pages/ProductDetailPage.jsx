@@ -15,6 +15,7 @@ const OptionColums = React.lazy(() =>
 );
 
 const ProductDetailPage = () => {
+  const staticServerUri = process.env.REACT_APP_PATH || "";
   const { id } = useParams();
   const dispatch = useDispatch();
   const { data, error, isLoading, status } = useQuery([`/product/${id}`], () =>
@@ -30,7 +31,7 @@ const ProductDetailPage = () => {
             Error 404
           </h1>
           <h2 text-4xl>해당 상품을 찾을 수 없습니다.</h2>
-          <Link to="/" className="text-2xl font-bold text-gray-800">
+          <Link to={staticServerUri + "/"} className="text-2xl font-bold text-gray-800">
             홈으로
           </Link>
         </div>
