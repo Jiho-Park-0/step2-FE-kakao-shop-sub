@@ -10,9 +10,9 @@ const Photo = ({ src, alt, className }) => {
   const staticServerUri = process.env.REACT_APP_PATH || "";
   return (
     <picture>
-      <source srcSet={`staticServerUri${src}`} />
+      <source srcSet={staticServerUri$ + `{src}`} />
       <img
-        src={`staticServerUri${src}`}
+        src={staticServerUri$ + `{src}`}
         alt={alt}
         className={className}
       />
