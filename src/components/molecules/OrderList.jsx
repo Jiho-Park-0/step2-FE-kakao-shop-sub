@@ -68,7 +68,7 @@ const OrderList = ({ data }) => {
         className="w-full rounded bg-kakao_yellow p-4 font-bold text-black"
         children="쇼핑 계속하기"
         onClick={() => {
-          navigate({staticServerUri + "/"});
+          navigate(staticServerUri + "/");
         }}
       />
     </div>

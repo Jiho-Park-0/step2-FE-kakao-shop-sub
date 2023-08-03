@@ -180,7 +180,7 @@ const CartList = ({ data }) => {
           mutate(updatePayload, {
             onSuccess: (data) => {
               console.log(data);
-              route({staticServerUri + "/order"});
+              route(staticServerUri + "/order");
             },
             onError: (error) => {},
           });
